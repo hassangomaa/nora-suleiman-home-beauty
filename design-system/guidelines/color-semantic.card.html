@@ -1,0 +1,18 @@
+<!-- @dsCard group="Colors" viewport="700x170" name="Semantic" subtitle="Success / Warning / Error / Info — /100 tint + /500 accent" -->
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head><meta charset="utf-8" /><link rel="stylesheet" href="../styles.css" />
+<style>
+  body{margin:0;background:var(--bg-canvas);font-family:var(--font-latin)}
+  .wrap{padding:var(--space-5);display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-3)}
+  .grp{display:flex;flex-direction:column;gap:6px}
+  .pair{display:flex;height:64px;border-radius:var(--radius-md);overflow:hidden;border:1px solid rgba(0,0,0,.05)}
+  .pair div{flex:1}
+  .nm{font-size:12px;font-weight:600;color:var(--text-primary)}
+  .v{font-size:11px;color:var(--text-secondary)}
+</style></head>
+<body><div class="wrap" id="w"></div>
+<script>
+const g=[['Success','#E2F5EE','#2FB380','مكتمل · مدفوع'],['Warning','#FDF0DE','#F4A23B','بانتظار · رصيد منخفض'],['Error','#FBE4E5','#E5484D','خطأ · ملغي'],['Info','#E5EEFD','#4C8DF6','في الطريق · معلومة']];
+document.getElementById('w').innerHTML=g.map(([n,c1,c5,d])=>`<div class="grp"><div class="pair"><div style="background:${c1}"></div><div style="background:${c5}"></div></div><div class="nm">${n}</div><div class="v">${c1} · ${c5}</div></div>`).join('');
+</script></body></html>

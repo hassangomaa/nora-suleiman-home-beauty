@@ -1,0 +1,40 @@
+/* ============================================================
+   ICONS — Material Symbols Rounded
+   The blueprint specifies outline icons with FILLED active variants
+   (e.g. active bottom-nav). Material Symbols Rounded is the chosen
+   set: a single variable font carrying an outline default + a FILL
+   axis for the filled active state — matching the spec's
+   stroke/fill requirement and Arabic-friendly rounded aesthetic.
+   Use: <span class="ms-icon">favorite</span>  (ligature names)
+        add .ms-icon--fill for the filled/active variant.
+   ============================================================ */
+
+.ms-icon {
+  font-family: 'Material Symbols Rounded';
+  font-weight: normal;
+  font-style: normal;
+  font-size: var(--icon-md);
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  user-select: none;
+}
+
+.ms-icon--fill { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+
+.ms-icon--xs { font-size: var(--icon-xs); }
+.ms-icon--sm { font-size: var(--icon-sm); }
+.ms-icon--md { font-size: var(--icon-md); }
+.ms-icon--lg { font-size: var(--icon-lg); }
+.ms-icon--xl { font-size: var(--icon-xl); }
+
+/* Directional glyphs mirror in RTL (back/forward chevrons, send). */
+[dir="rtl"] .ms-icon--mirror { transform: scaleX(-1); }

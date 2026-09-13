@@ -1,0 +1,69 @@
+/* ============================================================
+   SPACING & LAYOUT — Nora Suleiman Home Beauty
+   Strict 4pt grid. Radius, elevation, icon, z, touch tokens.
+   Source: docs/blueprint/02-design-system/03-spacing-layout.md
+   ============================================================ */
+
+:root {
+  /* ---- Spacing scale (4pt grid) ---- */
+  --space-0:  0px;
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;   /* default screen gutter & card padding */
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-7:  28px;
+  --space-8:  32px;
+  --space-9:  40px;
+  --space-10: 48px;
+  --space-11: 56px;
+  --space-12: 64px;
+
+  /* ---- Border radius ---- */
+  --radius-sm:   6px;     /* chips, tags, status chips, badges */
+  --radius-md:   10px;    /* default — buttons, inputs, rows */
+  --radius-lg:   16px;    /* cards, banners, toasts */
+  --radius-xl:   24px;    /* bottom sheets, modals, feature cards */
+  --radius-full: 9999px;  /* avatars, FAB, pills */
+
+  /* ---- Icon sizes ---- */
+  --icon-xs: 16px;
+  --icon-sm: 20px;
+  --icon-md: 24px;   /* default */
+  --icon-lg: 32px;
+  --icon-xl: 48px;
+
+  /* ---- Touch target ---- */
+  --touch-min: 44px;
+
+  /* ---- Z-index layers ---- */
+  --z-base:     0;    /* @kind other */
+  --z-raised:   10;   /* @kind other */
+  --z-appbar:   100;  /* @kind other */
+  --z-fab:      200;  /* @kind other */
+  --z-dropdown: 300;  /* @kind other */
+  --z-sheet:    400;  /* @kind other */
+  --z-modal:    500;  /* @kind other */
+  --z-toast:    600;  /* @kind other */
+  --z-tooltip:  700;  /* @kind other */
+
+  /* ---- Elevation / shadow ----
+     Light: soft warm low-opacity shadow derived from neutral/900.
+     Dark : darker shadow; raised surfaces also rely on border + lighter surface. */
+  --elevation-0: none;
+  --elevation-1: 0 1px 2px  rgba(var(--shadow-rgb), 0.06);
+  --elevation-2: 0 2px 8px  rgba(var(--shadow-rgb), 0.08);
+  --elevation-3: 0 6px 16px rgba(var(--shadow-rgb), 0.10);
+  --elevation-4: 0 12px 32px rgba(var(--shadow-rgb), 0.14);
+
+  /* ---- Layout ---- */
+  --content-max: 1200px;  /* web content max-width */
+}
+
+[data-theme="dark"] {
+  --elevation-1: 0 1px 2px  rgba(0,0,0,0.24);
+  --elevation-2: 0 2px 8px  rgba(0,0,0,0.32);
+  --elevation-3: 0 6px 16px rgba(0,0,0,0.40);
+  --elevation-4: 0 12px 32px rgba(0,0,0,0.48);
+}

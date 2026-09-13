@@ -1,0 +1,17 @@
+<!-- @dsCard group="Spacing" viewport="700x160" name="Border Radius" subtitle="sm 6 · md 10 · lg 16 · xl 24 · full" -->
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head><meta charset="utf-8" /><link rel="stylesheet" href="../styles.css" />
+<style>
+  body{margin:0;background:var(--bg-canvas);font-family:var(--font-latin)}
+  .wrap{padding:var(--space-5);display:flex;gap:var(--space-5);align-items:flex-end}
+  .sw{display:flex;flex-direction:column;gap:8px;align-items:center}
+  .box{width:88px;height:72px;background:var(--bg-surface);border:1px solid var(--border-strong)}
+  .k{font-size:12px;font-weight:600;color:var(--text-primary)}
+  .v{font-size:11px;color:var(--text-secondary)}
+</style></head>
+<body><div class="wrap" id="w"></div>
+<script>
+const r=[['sm','var(--radius-sm)','6'],['md','var(--radius-md)','10'],['lg','var(--radius-lg)','16'],['xl','var(--radius-xl)','24'],['full','var(--radius-full)','pill']];
+document.getElementById('w').innerHTML=r.map(([k,v,n])=>`<div class="sw"><div class="box" style="border-radius:${v}"></div><span class="k">radius/${k}</span><span class="v">${n}</span></div>`).join('');
+</script></body></html>

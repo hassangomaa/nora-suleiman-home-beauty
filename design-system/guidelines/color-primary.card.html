@@ -1,0 +1,18 @@
+<!-- @dsCard group="Colors" viewport="700x150" name="Primary — Rose" subtitle="Warm rose brand scale 50–900; 500 is the default brand" -->
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head><meta charset="utf-8" /><link rel="stylesheet" href="../styles.css" />
+<style>
+  body{margin:0;background:var(--bg-canvas);font-family:var(--font-latin)}
+  .wrap{padding:var(--space-5);display:flex;gap:var(--space-2)}
+  .sw{flex:1;display:flex;flex-direction:column;gap:6px}
+  .chip{height:64px;border-radius:var(--radius-md);border:1px solid rgba(0,0,0,.05)}
+  .k{font-size:11px;color:var(--text-secondary)}
+  .v{font-size:11px;color:var(--text-primary);font-weight:600}
+  .star{outline:2px solid var(--primary-500);outline-offset:2px}
+</style></head>
+<body><div class="wrap" id="w"></div>
+<script>
+const scale=[['50','#FCF2F6'],['100','#F9E1EC'],['200','#F2BFD5'],['300','#E892B6'],['400','#DD6A98'],['500','#D6486E'],['600','#BE3A5E'],['700','#9C2F4D'],['800','#7A263D'],['900','#561B2B']];
+document.getElementById('w').innerHTML=scale.map(([k,v])=>`<div class="sw"><div class="chip ${k==='500'?'star':''}" style="background:${v}"></div><div class="k">primary/${k}</div><div class="v">${v}</div></div>`).join('');
+</script></body></html>

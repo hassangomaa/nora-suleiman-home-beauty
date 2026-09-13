@@ -1,0 +1,17 @@
+<!-- @dsCard group="Spacing" viewport="700x180" name="Elevation & Shadow" subtitle="Soft warm shadows, elevation 1–4" -->
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head><meta charset="utf-8" /><link rel="stylesheet" href="../styles.css" />
+<style>
+  body{margin:0;background:var(--bg-surface);font-family:var(--font-latin)}
+  .wrap{padding:var(--space-7) var(--space-5);display:flex;gap:var(--space-6);align-items:center}
+  .sw{display:flex;flex-direction:column;gap:12px;align-items:center}
+  .box{width:96px;height:64px;background:var(--bg-surface-raised);border-radius:var(--radius-lg)}
+  .k{font-size:12px;font-weight:600;color:var(--text-primary)}
+  .v{font-size:11px;color:var(--text-secondary)}
+</style></head>
+<body><div class="wrap" id="w"></div>
+<script>
+const e=[['1','var(--elevation-1)','cards at rest'],['2','var(--elevation-2)','raised, dropdown'],['3','var(--elevation-3)','sheets, FAB'],['4','var(--elevation-4)','modals, toasts']];
+document.getElementById('w').innerHTML=e.map(([k,v,d])=>`<div class="sw"><div class="box" style="box-shadow:${v}"></div><span class="k">elevation/${k}</span><span class="v">${d}</span></div>`).join('');
+</script></body></html>

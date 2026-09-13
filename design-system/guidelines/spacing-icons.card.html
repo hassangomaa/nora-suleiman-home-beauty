@@ -1,0 +1,16 @@
+<!-- @dsCard group="Spacing" viewport="700x150" name="Icon Sizes" subtitle="xs 16 · sm 20 · md 24 · lg 32 · xl 48 (Material Symbols Rounded)" -->
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head><meta charset="utf-8" /><link rel="stylesheet" href="../styles.css" />
+<style>
+  body{margin:0;background:var(--bg-canvas);font-family:var(--font-latin);color:var(--text-primary)}
+  .wrap{padding:var(--space-5);display:flex;gap:var(--space-6);align-items:flex-end}
+  .sw{display:flex;flex-direction:column;gap:8px;align-items:center}
+  .k{font-size:12px;font-weight:600}
+  .v{font-size:11px;color:var(--text-secondary)}
+</style></head>
+<body><div class="wrap" id="w"></div>
+<script>
+const sizes=[['xs','16'],['sm','20'],['md','24'],['lg','32'],['xl','48']];
+document.getElementById('w').innerHTML=sizes.map(([k,v])=>`<div class="sw"><span class="ms-icon ms-icon--${k}" style="color:var(--primary-500)">spa</span><span class="k">icon/${k}</span><span class="v">${v}px</span></div>`).join('');
+</script></body></html>

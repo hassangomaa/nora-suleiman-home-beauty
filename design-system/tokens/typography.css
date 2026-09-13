@@ -1,0 +1,40 @@
+/* ============================================================
+   TYPOGRAPHY — Nora Suleiman Home Beauty
+   Arabic-first. Tajawal (ar) + Inter (latin). 4pt-aligned scale.
+   Source: docs/blueprint/02-design-system/02-typography.md
+   ============================================================ */
+
+:root {
+  /* ---- Families ---- */
+  --font-arabic: 'Tajawal', system-ui, sans-serif;     /* default UI font (ar-SA) */
+  --font-latin:  'Inter', system-ui, sans-serif;       /* en locale / Latin content */
+  --font-base:   var(--font-arabic);
+
+  /* ---- Weights ---- */
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+
+  /* ---- Type scale (size / line-height / weight) ---- */
+  --type-display-size: 28px;  --type-display-lh: 40px;  --type-display-weight: 700;
+  --type-h1-size:      24px;  --type-h1-lh:      34px;  --type-h1-weight:      700;
+  --type-h2-size:      20px;  --type-h2-lh:      30px;  --type-h2-weight:      700;
+  --type-h3-size:      18px;  --type-h3-lh:      28px;  --type-h3-weight:      600;
+  --type-body-lg-size: 16px;  --type-body-lg-lh: 26px;  --type-body-lg-weight: 400;
+  --type-body-size:    14px;  --type-body-lh:    22px;  --type-body-weight:    400;
+  --type-label-size:   14px;  --type-label-lh:   20px;  --type-label-weight:   500;
+  --type-caption-size: 12px;  --type-caption-lh: 18px;  --type-caption-weight: 400;
+  --type-overline-size:11px;  --type-overline-lh:16px;  --type-overline-weight:600;
+}
+
+/* ---- Optional helper classes (consumers may use tokens directly) ---- */
+.t-display  { font: var(--type-display-weight) var(--type-display-size)/var(--type-display-lh) var(--font-base); }
+.t-h1       { font: var(--type-h1-weight) var(--type-h1-size)/var(--type-h1-lh) var(--font-base); }
+.t-h2       { font: var(--type-h2-weight) var(--type-h2-size)/var(--type-h2-lh) var(--font-base); }
+.t-h3       { font: var(--type-h3-weight) var(--type-h3-size)/var(--type-h3-lh) var(--font-base); }
+.t-body-lg  { font: var(--type-body-lg-weight) var(--type-body-lg-size)/var(--type-body-lg-lh) var(--font-base); }
+.t-body     { font: var(--type-body-weight) var(--type-body-size)/var(--type-body-lh) var(--font-base); }
+.t-label    { font: var(--type-label-weight) var(--type-label-size)/var(--type-label-lh) var(--font-base); }
+.t-caption  { font: var(--type-caption-weight) var(--type-caption-size)/var(--type-caption-lh) var(--font-base); }
+.t-overline { font: var(--type-overline-weight) var(--type-overline-size)/var(--type-overline-lh) var(--font-latin); text-transform: uppercase; letter-spacing: 0.06em; }

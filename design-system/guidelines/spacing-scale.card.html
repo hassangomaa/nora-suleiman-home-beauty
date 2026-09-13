@@ -1,0 +1,17 @@
+<!-- @dsCard group="Spacing" viewport="700x200" name="Spacing Scale — 4pt grid" subtitle="space/0 … space/12 (0–64pt)" -->
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head><meta charset="utf-8" /><link rel="stylesheet" href="../styles.css" />
+<style>
+  body{margin:0;background:var(--bg-canvas);font-family:var(--font-latin)}
+  .wrap{padding:var(--space-5);display:flex;flex-direction:column;gap:8px}
+  .row{display:flex;align-items:center;gap:12px}
+  .k{width:80px;font-size:12px;color:var(--text-secondary)}
+  .bar{height:14px;background:var(--primary-300);border-radius:3px}
+  .v{font-size:11px;color:var(--text-primary);font-weight:600}
+</style></head>
+<body><div class="wrap" id="w"></div>
+<script>
+const s=[['1',4],['2',8],['3',12],['4',16],['5',20],['6',24],['7',28],['8',32],['9',40],['10',48],['11',56],['12',64]];
+document.getElementById('w').innerHTML=s.map(([k,v])=>`<div class="row"><span class="k">space/${k}</span><span class="bar" style="width:${v}px"></span><span class="v">${v}</span></div>`).join('');
+</script></body></html>

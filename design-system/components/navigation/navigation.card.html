@@ -1,0 +1,42 @@
+<!-- @dsCard group="Components" viewport="700x260" name="Navigation — AppBar & BottomNavBar" subtitle="Top header and client tab bar" -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../../styles.css" />
+<style>
+  body { margin: 0; background: var(--bg-surface); font-family: var(--font-base); }
+  .wrap { padding: var(--space-5); display: flex; flex-direction: column; gap: var(--space-4); }
+  .phone { width: 360px; max-width: 100%; border: 1px solid var(--border-default); border-radius: var(--radius-lg); overflow: hidden; background: var(--bg-canvas); }
+  .body { padding: var(--space-5); color: var(--text-secondary); font: var(--type-body-weight) var(--type-body-size)/var(--type-body-lh) var(--font-base); min-height: 64px; }
+</style>
+</head>
+<body>
+<div id="root" class="wrap"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<script type="text/babel">
+const { AppBar, BottomNavBar, IconButton, Badge } = window.NoraSuleimanHomeBeautyDesignSystem_5b646a;
+function Demo() {
+  const [tab, setTab] = React.useState('discover');
+  const tabs = [
+    { key:'discover', icon:'search', label:'استكشفي' },
+    { key:'bookings', icon:'event', label:'حجوزاتي' },
+    { key:'chat', icon:'chat_bubble', label:'المحادثات', badge:2 },
+    { key:'profile', icon:'person', label:'حسابي' },
+  ];
+  return (
+    <div className="phone">
+      <AppBar title="تفاصيل الحجز" onBack={()=>{}} raised
+        actions={<><IconButton icon="ios_share" label="مشاركة" /><Badge count={3}><IconButton icon="notifications" label="إشعارات" /></Badge></>} />
+      <div className="body">محتوى الشاشة…</div>
+      <BottomNavBar tabs={tabs} active={tab} onChange={setTab} />
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+</script>
+</body>
+</html>

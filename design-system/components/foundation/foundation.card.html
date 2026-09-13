@@ -1,0 +1,44 @@
+<!-- @dsCard group="Components" viewport="700x180" name="Foundation — Icon" subtitle="Material Symbols Rounded: outline + filled" -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../../styles.css" />
+<style>
+  body { margin: 0; background: var(--bg-canvas); font-family: var(--font-base); }
+  .wrap { padding: var(--space-5); display: flex; flex-direction: column; gap: var(--space-4); }
+  .row { display: flex; align-items: center; gap: var(--space-4); flex-wrap: wrap; color: var(--text-primary); }
+  .lbl { font: var(--type-overline-weight) var(--type-overline-size)/1 var(--font-latin); letter-spacing: .08em; text-transform: uppercase; color: var(--text-secondary); width: 64px; }
+  figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  figcaption { font: var(--type-caption-weight) 11px/1 var(--font-latin); color: var(--text-secondary); }
+</style>
+</head>
+<body>
+<div id="root" class="wrap"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<script type="text/babel">
+const { Icon } = window.NoraSuleimanHomeBeautyDesignSystem_5b646a;
+const ICONS = ['search','favorite','event','chat_bubble','person','location_on','star','schedule','spa','workspace_premium','qr_code_scanner','notifications'];
+function Demo() {
+  return (
+    <>
+      <div className="row">
+        <span className="lbl">Outline</span>
+        {ICONS.map(n => <figure key={n}><Icon name={n} size="lg" color="var(--text-primary)" /><figcaption>{n}</figcaption></figure>)}
+      </div>
+      <div className="row">
+        <span className="lbl">Filled · active</span>
+        {['search','favorite','event','star','spa','person'].map(n => <Icon key={n} name={n} size="lg" fill color="var(--primary-500)" />)}
+        <span style={{font:'var(--type-caption-weight) var(--type-caption-size)/1 var(--font-base)', color:'var(--text-secondary)'}}>الأيقونات الذهبية للتقييم</span>
+        <Icon name="star" size="lg" fill color="var(--secondary-500)" />
+      </div>
+    </>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+</script>
+</body>
+</html>

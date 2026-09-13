@@ -1,0 +1,16 @@
+<!-- @dsCard group="Colors" viewport="700x150" name="Neutrals — Warm" subtitle="Warm-tinted neutral ramp 0–900 for surfaces & text" -->
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head><meta charset="utf-8" /><link rel="stylesheet" href="../styles.css" />
+<style>
+  body{margin:0;background:var(--bg-canvas);font-family:var(--font-latin)}
+  .wrap{padding:var(--space-5);display:flex;gap:6px}
+  .sw{flex:1;display:flex;flex-direction:column;gap:6px}
+  .chip{height:64px;border-radius:var(--radius-md);border:1px solid rgba(0,0,0,.06)}
+  .k{font-size:10px;color:var(--text-secondary)}
+</style></head>
+<body><div class="wrap" id="w"></div>
+<script>
+const scale=[['0','#FFFFFF'],['50','#FAF7F8'],['100','#F3EEF0'],['200','#E6DFE2'],['300','#D2C8CC'],['400','#A89BA1'],['500','#7C6F75'],['600','#5C5258'],['700','#403A3D'],['800','#272326'],['900','#161214']];
+document.getElementById('w').innerHTML=scale.map(([k,v])=>`<div class="sw"><div class="chip" style="background:${v}"></div><div class="k">${k}</div></div>`).join('');
+</script></body></html>

@@ -17,3 +17,7 @@ All deliverables are in [`docs/`](docs/):
 | Proposal PDF/DOCX | Full formal proposal — AR & EN |
 
 > Client confidential. Do not redistribute without Smart Lead Tech approval.
+
+## Design system & UI kit (SSOT)
+
+The approved design system and the clickable client-app prototype live in [`design-system/`](design-system/) — tokens, components, guidelines, `ui_kits/client-app` (open `index.html` over HTTP), exports and `screenshots/`. Synced from the Claude Design export on 2026-09-13; this repository is the single source of truth for the Home Beauty product.

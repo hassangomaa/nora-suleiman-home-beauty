@@ -1,0 +1,104 @@
+/* ============================================================
+   COLORS — Nora Suleiman Home Beauty
+   Refined feminine beauty brand: warm rose primary, muted gold
+   accent, soft warm-neutral surfaces. Light + dark, AA contrast.
+   Source: docs/blueprint/02-design-system/01-colors.md
+   ============================================================ */
+
+:root {
+  /* ---- Brand: Primary / Rose ---- */
+  --primary-50:  #FCF2F6;
+  --primary-100: #F9E1EC;
+  --primary-200: #F2BFD5;
+  --primary-300: #E892B6;
+  --primary-400: #DD6A98;
+  --primary-500: #D6486E;   /* brand default — buttons, active icons */
+  --primary-600: #BE3A5E;   /* pressed */
+  --primary-700: #9C2F4D;   /* high-emphasis text on light */
+  --primary-800: #7A263D;
+  --primary-900: #561B2B;
+
+  /* ---- Brand: Secondary / Gold (luxury accent) ---- */
+  --secondary-100: #F6EEDD;  /* premium badge bg */
+  --secondary-300: #E2C893;  /* premium borders/dividers */
+  --secondary-500: #C9A36A;  /* accent — premium, rating stars, highlights */
+  --secondary-700: #9A7A45;  /* premium text */
+
+  /* ---- Semantic ---- */
+  --success-100: #E2F5EE;
+  --success-500: #2FB380;
+  --warning-100: #FDF0DE;
+  --warning-500: #F4A23B;
+  --error-100:   #FBE4E5;
+  --error-500:   #E5484D;
+  --info-100:    #E5EEFD;
+  --info-500:    #4C8DF6;
+
+  /* ---- Neutrals (warm) ---- */
+  --neutral-0:   #FFFFFF;
+  --neutral-50:  #FAF7F8;
+  --neutral-100: #F3EEF0;
+  --neutral-200: #E6DFE2;
+  --neutral-300: #D2C8CC;
+  --neutral-400: #A89BA1;
+  --neutral-500: #7C6F75;
+  --neutral-600: #5C5258;
+  --neutral-700: #403A3D;
+  --neutral-800: #272326;
+  --neutral-900: #161214;
+
+  /* shadow base (warm near-black, never pure black in light mode) */
+  --shadow-rgb: 22, 18, 20;
+
+  /* ============================================================
+     SEMANTIC ALIASES — LIGHT THEME (default)
+     ============================================================ */
+  --bg-canvas:          var(--neutral-0);
+  --bg-surface:         var(--neutral-50);
+  --bg-surface-raised:  var(--neutral-0);
+  --bg-tint:            var(--primary-50);
+
+  --border-default:     var(--neutral-200);
+  --border-strong:      var(--neutral-300);
+
+  --text-primary:       var(--neutral-900);
+  --text-secondary:     var(--neutral-500);
+  --text-disabled:      var(--neutral-400);
+  --text-on-primary:    var(--neutral-0);
+
+  --action-primary:         var(--primary-500);
+  --action-primary-pressed: var(--primary-600);
+  --action-primary-hover:    var(--primary-600);
+  --focus-ring:             var(--primary-400);
+
+  /* scrim */
+  --scrim: rgba(22, 18, 20, 0.48);
+}
+
+/* ============================================================
+   SEMANTIC ALIASES — DARK THEME
+   Activate via [data-theme="dark"] on any ancestor (html/body/section).
+   ============================================================ */
+[data-theme="dark"] {
+  --shadow-rgb: 0, 0, 0;
+
+  --bg-canvas:          var(--neutral-900);
+  --bg-surface:         var(--neutral-800);
+  --bg-surface-raised:  var(--neutral-700);
+  --bg-tint:            var(--primary-900);
+
+  --border-default:     var(--neutral-700);
+  --border-strong:      var(--neutral-600);
+
+  --text-primary:       var(--neutral-50);
+  --text-secondary:     var(--neutral-300);
+  --text-disabled:      var(--neutral-500);
+  --text-on-primary:    var(--neutral-0);
+
+  --action-primary:         var(--primary-400);
+  --action-primary-pressed: var(--primary-500);
+  --action-primary-hover:    var(--primary-300);
+  --focus-ring:             var(--primary-300);
+
+  --scrim: rgba(0, 0, 0, 0.64);
+}

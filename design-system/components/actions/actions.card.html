@@ -1,0 +1,53 @@
+<!-- @dsCard group="Components" viewport="700x200" name="Actions — Button, IconButton, FAB" subtitle="Primary CTA, icon controls & FAB across variants" -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../../styles.css" />
+<style>
+  body { margin: 0; background: var(--bg-canvas); font-family: var(--font-base); }
+  .wrap { padding: var(--space-5); display: flex; flex-direction: column; gap: var(--space-4); }
+  .row { display: flex; align-items: center; gap: var(--space-3); flex-wrap: wrap; }
+  .lbl { font: var(--type-overline-weight) var(--type-overline-size)/1 var(--font-latin); letter-spacing: .08em; text-transform: uppercase; color: var(--text-secondary); width: 80px; }
+</style>
+</head>
+<body>
+<div id="root" class="wrap"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<script type="text/babel">
+const { Button, IconButton, Fab } = window.NoraSuleimanHomeBeautyDesignSystem_5b646a;
+function Demo() {
+  return (
+    <>
+      <div className="row">
+        <span className="lbl">Button</span>
+        <Button>احجزي الآن</Button>
+        <Button variant="secondary" leadingIcon="chat_bubble">مراسلة</Button>
+        <Button variant="ghost">إلغاء</Button>
+        <Button variant="destructive" leadingIcon="delete">حذف</Button>
+      </div>
+      <div className="row">
+        <span className="lbl">States</span>
+        <Button size="sm">صغير</Button>
+        <Button loading>جارٍ الدفع</Button>
+        <Button disabled>غير متاح</Button>
+        <Button trailingIcon="arrow_forward">متابعة</Button>
+      </div>
+      <div className="row">
+        <span className="lbl">Icon · FAB</span>
+        <IconButton icon="favorite" label="مفضّلة" active style={{ color: 'var(--primary-500)' }} />
+        <IconButton icon="share" label="مشاركة" variant="tonal" />
+        <IconButton icon="notifications" label="إشعارات" />
+        <Fab icon="add" label="إضافة" />
+        <Fab icon="add" label="أضيفي خدمة" extended />
+      </div>
+    </>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+</script>
+</body>
+</html>

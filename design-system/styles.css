@@ -1,0 +1,17 @@
+/* ============================================================
+   Nora Suleiman Home Beauty — Design System
+   Global stylesheet entry. @import lines only.
+   Consumers link THIS one file.
+   ============================================================ */
+
+/* Webfonts (direct @font-face → gstatic), tokens, foundations */
+@import "tokens/fonts.css";
+
+/* Design tokens */
+@import "tokens/colors.css";
+@import "tokens/typography.css";
+@import "tokens/spacing.css";
+
+/* Foundations (icon class, base resets) */
+@import "tokens/icons.css";
+@import "tokens/base.css";

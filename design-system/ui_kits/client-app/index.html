@@ -1,0 +1,236 @@
+<!-- @dsCard group="Client App" viewport="420x760" name="Mobile — Client App" subtitle="Arabic RTL prototype: discover → book → pay → confirm" -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<title>Home Beauty — Client App</title>
+<link rel="stylesheet" href="../../styles.css" />
+<template id="__bundler_thumbnail">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" style="background:#FCF2F6">
+    <defs>
+      <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#D6486E"/>
+        <stop offset="1" stop-color="#9C2F4D"/>
+      </linearGradient>
+    </defs>
+    <text x="100" y="118" text-anchor="middle" font-family="Georgia, serif" font-size="80" font-weight="700" fill="url(#g)">H</text>
+    <text x="100" y="160" text-anchor="middle" font-family="Arial" font-size="14" letter-spacing="3" fill="#9A7A45">HOME BEAUTY</text>
+  </svg>
+</template>
+<style>
+  html, body { margin: 0; padding: 0; }
+  body { background: #efeaec; font-family: var(--font-base); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; }
+  .frame { width: 390px; height: 760px; background: var(--bg-canvas); border-radius: 44px; box-shadow: 0 30px 80px rgba(22,18,20,0.25), 0 0 0 12px #1c1418, 0 0 0 13px #3b2e34; overflow: hidden; position: relative; display: flex; flex-direction: column; }
+  .statusbar { position: relative; z-index: 5; height: 44px; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; font: 600 14px/1 var(--font-latin); color: var(--text-primary); flex-shrink: 0; }
+  .notch { position: absolute; top: 8px; left: 50%; transform: translateX(-50%); width: 120px; height: 28px; background: #1c1418; border-radius: 999px; z-index: 6; }
+  .statusbar .right { display: flex; gap: 6px; align-items: center; }
+  .body { flex: 1; position: relative; overflow-y: auto; overflow-x: hidden; min-height: 0; }
+  .body::-webkit-scrollbar { display: none; }
+  #screen-footer { flex-shrink: 0; }
+  #screen-footer:empty { display: none; }
+  .tabbar { flex-shrink: 0; }
+  .home-indicator { height: 18px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .home-indicator::after { content: ''; width: 134px; height: 5px; background: var(--neutral-900); border-radius: 999px; opacity: 0.4; }
+
+
+</style>
+</head>
+<body>
+<div id="phone" class="frame">
+  <div class="notch"></div>
+  <div class="statusbar">
+    <span>٩:٤١</span>
+    <span class="right">
+      <span class="ms-icon ms-icon--xs">signal_cellular_alt</span>
+      <span class="ms-icon ms-icon--xs">wifi</span>
+      <span class="ms-icon ms-icon--xs">battery_full</span>
+    </span>
+  </div>
+  <div id="screen" class="body"></div>
+  <div id="screen-footer"></div>
+  <div id="tabs" class="tabbar"></div>
+  <div class="home-indicator"></div>
+</div>
+
+<script>
+  // Suppress resource-load (img/link/script) errors from the bundler's global
+  // error overlay — image failures aren't real bugs, and the overlay also
+  // self-hides after this script.
+  window.addEventListener('error', function (e) {
+    if (e && e.target && (e.target.tagName === 'IMG' || e.target.tagName === 'LINK' || e.target.tagName === 'SCRIPT')) {
+      if (e.target.tagName === 'IMG') { try { e.target.style.opacity = '0'; } catch (_) {} }
+      e.stopImmediatePropagation();
+    }
+  }, true);
+  // Belt + braces: if the bundler overlay still appears, hide it (it only
+  // ever surfaces empty/network noise in this build).
+  setInterval(function () {
+    var d = document.getElementById('__bundler_err');
+    if (d) d.style.display = 'none';
+  }, 250);
+</script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<script src="app-data.js"></script>
+<script src="app-logo-asset.js"></script>
+<script type="text/babel" src="app-brand-icons.jsx"></script>
+<script type="text/babel" src="app-screens-onboarding.jsx"></script>
+<script type="text/babel" src="app-screens-discover.jsx"></script>
+<script type="text/babel" src="app-screens-booking.jsx"></script>
+<script type="text/babel" src="app-screens-account.jsx"></script>
+<script type="text/babel" src="app-screens-more.jsx"></script>
+<script type="text/babel" src="app-screens-provider.jsx"></script>
+
+<script type="text/babel">
+const DS_APP = window.NoraSuleimanHomeBeautyDesignSystem_5b646a;
+const ONBOARDED_KEY = 'hb_onboarded_v3';
+
+function Shell() {
+  const data = window.NSData;
+  // Demo prototype: every fresh load starts at splash so the user can walk
+  // the entire onboarding/auth flow. (The previous localStorage skip was
+  // production-app behaviour, not what we want in a UI kit preview.)
+  const [stack, setStack] = React.useState([{ name: 'splash', params: {} }]);
+  const [tab, setTab] = React.useState('discover');
+  const [fav, setFav] = React.useState({ p1: true, p3: true });
+  const top = stack[stack.length - 1];
+
+  const INTRO = new Set(['splash', 'onboarding', 'role', 'auth', 'otp', 'client-setup', 'provider-setup', 'provider-tier']);
+  const isIntro = INTRO.has(top.name);
+
+  React.useEffect(() => {
+    const el = document.getElementById('screen');
+    if (el) el.scrollTo({ top: 0, behavior: 'auto' });
+  }, [top.name, JSON.stringify(top.params)]);
+
+  // Programmatic nav hook (PPTX export, tests).
+  React.useEffect(() => {
+    window.__goToScreen = (name, params) => goRoot(name, params || {});
+  }, []);
+
+  function goRoot(name, params) {
+    if (!name || name === 'home') { setTab('discover'); setStack([{ name: 'home', params: {} }]); return; }
+    if (name === 'bookings') { setTab('bookings'); setStack([{ name: 'bookings', params: {} }]); return; }
+    if (name === 'profile')  { setTab('profile');  setStack([{ name: 'profile',  params: {} }]); return; }
+    if (name === 'chats')    { setTab('chat');     setStack([{ name: 'chats',    params: {} }]); return; }
+    if (name === 'p-dashboard') { setTab('p-dashboard'); setStack([{ name: 'p-dashboard', params: {} }]); return; }
+    if (name === 'p-inbox')     { setTab('p-inbox');     setStack([{ name: 'p-inbox',     params: {} }]); return; }
+    if (name === 'p-wallet')    { setTab('p-wallet');    setStack([{ name: 'p-wallet',    params: {} }]); return; }
+    if (name === 'p-profile')   { setTab('p-profile');   setStack([{ name: 'p-profile',   params: {} }]); return; }
+    if (name === 'switch-to-client') { setTab('discover'); setStack([{ name: 'home', params: {} }]); return; }
+    setStack([{ name: 'home', params: {} }, { name, params }]);
+  }
+
+  function nav(name, params) {
+    if (name === 'back') return setStack((s) => s.length > 1 ? s.slice(0, -1) : s);
+    if (['home', 'bookings', 'profile', 'chats', 'p-dashboard', 'p-inbox', 'p-wallet', 'p-profile', 'switch-to-client'].includes(name)) return goRoot(name, params);
+    setStack((s) => [...s, { name, params: params || {} }]);
+  }
+  function toggleFav(id) { setFav((f) => ({ ...f, [id]: !f[id] })); }
+  function switchTab(t) {
+    if (t === 'discover') { setTab(t); setStack([{ name: 'home', params: {} }]); return; }
+    if (t === 'bookings') { setTab(t); setStack([{ name: 'bookings', params: {} }]); return; }
+    if (t === 'profile')  { setTab(t); setStack([{ name: 'profile',  params: {} }]); return; }
+    if (t === 'chat')     { setTab(t); setStack([{ name: 'chats',    params: {} }]); return; }
+    if (t === 'p-dashboard') { setTab(t); setStack([{ name: 'p-dashboard', params: {} }]); return; }
+    if (t === 'p-inbox')     { setTab(t); setStack([{ name: 'p-inbox',     params: {} }]); return; }
+    if (t === 'p-wallet')    { setTab(t); setStack([{ name: 'p-wallet',    params: {} }]); return; }
+    if (t === 'p-profile')   { setTab(t); setStack([{ name: 'p-profile',   params: {} }]); return; }
+  }
+
+  const providerById = (id) => data.providers.find((p) => p.id === id);
+  const serviceById = (p, sid) => p && p.services.find((s) => s.id === sid);
+  const bookingById = (id) => data.bookings.find((b) => b.id === id);
+  const addrTextById = (id) => (data.addresses.find((a) => a.id === id) || {}).text;
+  const chatByProviderId = (pid) => data.chats.find((c) => c.providerId === pid) || data.chats[0];
+
+  let screen = null;
+  const n = top.name, p = top.params;
+
+  // Intro flow
+  if (n === 'splash') screen = <SplashScreen nav={nav} />;
+  else if (n === 'onboarding') screen = <OnboardingScreen nav={nav} />;
+  else if (n === 'role') screen = <RoleChoiceScreen nav={nav} />;
+  else if (n === 'auth') screen = <AuthScreen nav={nav} role={p.role} />;
+  else if (n === 'otp') screen = <OtpScreen nav={nav} role={p.role} />;
+  else if (n === 'client-setup') screen = <ClientSetupScreen nav={nav} />;
+  else if (n === 'provider-setup') screen = <ProviderSetupScreen nav={nav} />;
+  else if (n === 'provider-tier') screen = <ProviderTierScreen nav={nav} />;
+  // Main app
+  else if (n === 'home') screen = <HomeScreen nav={nav} data={data} fav={fav} toggleFav={toggleFav} />;
+  else if (n === 'provider') screen = <ProviderScreen nav={nav} provider={providerById(p.id)} fav={fav} toggleFav={toggleFav} />;
+  else if (n === 'service') { const pp = providerById(p.id); screen = <ServiceScreen nav={nav} provider={pp} service={serviceById(pp, p.serviceId)} />; }
+  else if (n === 'booking') { const pp = providerById(p.id); screen = <BookingCreateScreen nav={nav} provider={pp} service={serviceById(pp, p.serviceId)} addresses={data.addresses} slotsData={data.slots} days={data.days} total={p.total} />; }
+  else if (n === 'review')  { const pp = providerById(p.id); screen = <ReviewPayScreen nav={nav} provider={pp} service={serviceById(pp, p.serviceId)} total={p.total} day={p.day} slot={p.slot} addrText={addrTextById(p.addr)} />; }
+  else if (n === 'confirmed') { const pp = providerById(p.id); screen = <ConfirmationScreen nav={nav} provider={pp} service={serviceById(pp, p.serviceId)} total={p.total} day={p.day} slot={p.slot} addrText={p.addrText} />; }
+  else if (n === 'bookings') screen = <BookingsScreen nav={nav} bookings={data.bookings} />;
+  else if (n === 'booking-detail') screen = <BookingDetailScreen nav={nav} booking={bookingById(p.id)} />;
+  else if (n === 'rate') screen = <RateScreen nav={nav} booking={bookingById(p.bookingId) || data.bookings[0]} />;
+  else if (n === 'profile') screen = <ProfileScreen nav={nav} />;
+  else if (n === 'notifications') screen = <NotificationsScreen nav={nav} notifications={data.notifications} />;
+  else if (n === 'chats') screen = <ChatListScreen nav={nav} chats={data.chats} />;
+  else if (n === 'chat') { const c = data.chats.find((x) => x.id === p.id) || data.chats[0]; screen = <ChatScreen nav={nav} chat={c} />; }
+  else if (n === 'chat-by-provider') { const c = chatByProviderId(p.providerId); screen = <ChatScreen nav={nav} chat={c} />; }
+  else if (n === 'favorites') screen = <FavoritesScreen nav={nav} providers={data.providers} fav={fav} toggleFav={toggleFav} />;
+  else if (n === 'payment-methods') screen = <PaymentMethodsScreen nav={nav} methods={data.paymentMethods} />;
+  else if (n === 'addresses') screen = <AddressesScreen nav={nav} addresses={data.addresses} />;
+  else if (n === 'cancel-booking') screen = <CancelBookingScreen nav={nav} booking={bookingById(p.id) || data.bookings[0]} />;
+  else if (n === 'premium') screen = <PremiumScreen nav={nav} premium={data.premium} />;
+  // Provider (vendor) side
+  else if (n === 'p-dashboard') screen = <ProviderDashboard nav={nav} />;
+  else if (n === 'p-inbox')     screen = <ProviderInbox     nav={nav} />;
+  else if (n === 'p-wallet')    screen = <ProviderWallet    nav={nav} />;
+  else if (n === 'p-profile')   screen = <ProviderProfile   nav={nav} />;
+  else {
+    // Stub for screens we haven't built yet (addresses, support, settings, etc.)
+    const { AppBar, EmptyState, Button } = DS_APP;
+    screen = (<div><AppBar onBack={() => nav('back')} title="قريباً" /><EmptyState icon="construction" title="هذه الشاشة قيد الإعداد" cta="العودة" onCta={() => nav('back')}>سنُفعّلها قريباً</EmptyState></div>);
+  }
+
+  const PROVIDER_TABS_SET = new Set(['p-dashboard', 'p-inbox', 'p-wallet', 'p-profile']);
+  const isProviderMode = PROVIDER_TABS_SET.has(top.name);
+
+  const { BottomNavBar } = DS_APP;
+  const clientTabs = [
+    { key: 'discover', icon: 'search', label: 'استكشفي' },
+    { key: 'bookings', icon: 'event', label: 'حجوزاتي' },
+    { key: 'chat', icon: 'chat_bubble', label: 'المحادثات', badge: 2 },
+    { key: 'profile', icon: 'person', label: 'حسابي' },
+  ];
+  const providerTabs = [
+    { key: 'p-dashboard', icon: 'space_dashboard', label: 'الرئيسية' },
+    { key: 'p-inbox',     icon: 'event',           label: 'الحجوزات', badge: 2 },
+    { key: 'p-wallet',    icon: 'account_balance_wallet', label: 'المحفظة' },
+    { key: 'p-profile',   icon: 'person',          label: 'ملفّي' },
+  ];
+  const tabs = isProviderMode ? providerTabs : clientTabs;
+  const activeTab = isProviderMode ? top.name : tab;
+
+  // Hide chrome during intro flow for a clean welcome
+  React.useEffect(() => {
+    document.querySelector('.statusbar').style.opacity = isIntro && top.name === 'splash' ? '0' : '1';
+    document.getElementById('tabs').style.display = isIntro ? 'none' : 'flex';
+    document.querySelector('.home-indicator').style.display = isIntro && top.name === 'splash' ? 'none' : 'flex';
+  }, [isIntro, top.name]);
+
+  return (
+    <>
+      {ReactDOM.createPortal(screen, document.getElementById('screen'))}
+      {!isIntro && ReactDOM.createPortal(<BottomNavBar tabs={tabs} active={activeTab} onChange={switchTab} />, document.getElementById('tabs'))}
+    </>
+  );
+}
+
+const wait = () => {
+  if (window.SplashScreen && window.HomeScreen && window.NotificationsScreen && window.ProviderDashboard && window.AppleMark && DS_APP) {
+    const host = document.createElement('div');
+    document.body.appendChild(host);
+    ReactDOM.createRoot(host).render(<Shell />);
+  } else { setTimeout(wait, 40); }
+};
+wait();
+</script>
+</body>
+</html>

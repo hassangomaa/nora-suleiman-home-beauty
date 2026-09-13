@@ -1,0 +1,18 @@
+<!-- @dsCard group="Brand" viewport="700x260" name="Logo & Wordmark" subtitle="Official Home Beauty lockup — rose & gold monogram, English wordmark, Arabic tagline" -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head><meta charset="utf-8" /><link rel="stylesheet" href="../styles.css" />
+<style>
+  body{margin:0;background:var(--bg-canvas);font-family:var(--font-base)}
+  .wrap{padding:var(--space-5);display:grid;grid-template-columns:1fr 1fr;gap:var(--space-5);align-items:center}
+  .panel{padding:var(--space-5);border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center}
+  .light{background:var(--bg-canvas);border:1px solid var(--border-default)}
+  .rose{background:var(--primary-500)}
+  .dark{background:var(--neutral-900)}
+  img{width:160px;height:auto;display:block}
+  .rose img,.dark img{filter:brightness(0) invert(1)}
+</style></head>
+<body><div class="wrap">
+  <div class="panel light"><img src="../assets/logo-mark.png" alt="Home Beauty" /></div>
+  <div class="panel rose"><img src="../assets/logo-mark.png" alt="Home Beauty" /></div>
+</div></body></html>

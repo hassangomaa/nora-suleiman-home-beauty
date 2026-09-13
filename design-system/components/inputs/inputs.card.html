@@ -1,0 +1,46 @@
+<!-- @dsCard group="Components" viewport="700x230" name="Inputs — TextInput, SearchBar, Chip" subtitle="Fields, search & selectable chips" -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../../styles.css" />
+<style>
+  body { margin: 0; background: var(--bg-canvas); font-family: var(--font-base); }
+  .wrap { padding: var(--space-5); display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4) var(--space-5); align-items: start; }
+  .col { display: flex; flex-direction: column; gap: var(--space-3); }
+  .row { display: flex; gap: var(--space-2); flex-wrap: wrap; align-items: center; }
+</style>
+</head>
+<body>
+<div id="root" class="wrap"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<script type="text/babel">
+const { TextInput, SearchBar, Chip } = window.NoraSuleimanHomeBeautyDesignSystem_5b646a;
+function Demo() {
+  const [q, setQ] = React.useState('ميك أب');
+  const [sel, setSel] = React.useState('makeup');
+  return (
+    <>
+      <div className="col">
+        <TextInput label="الاسم" leadingIcon="person" value="ريم الشمري" onChange={()=>{}} />
+        <TextInput label="رقم الجوال" leadingIcon="phone" value="5X XXX XXXX" onChange={()=>{}} error="أدخلي رقم جوال سعودي صحيح" />
+      </div>
+      <div className="col">
+        <SearchBar value={q} onChange={(e)=>setQ(e.target.value)} onClear={()=>setQ('')} onFilter={()=>{}} filterActive />
+        <div className="row">
+          {[['makeup','ميك أب','palette'],['hair','شعر','content_cut'],['nails','أظافر','back_hand'],['skin','بشرة','spa']].map(([k,l,ic])=>(
+            <Chip key={k} leadingIcon={ic} selected={sel===k} onClick={()=>setSel(k)}>{l}</Chip>
+          ))}
+          <Chip removable onRemove={()=>{}}>الرياض</Chip>
+        </div>
+      </div>
+    </>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+</script>
+</body>
+</html>
